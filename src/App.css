@@ -1,0 +1,34 @@
+/* Make sure body and html take full height and no margin */
+:root {
+  --primary-color: #f57c00; /* Orange */
+  --primary-gradient: linear-gradient(45deg, #ff5100, #e99618); /* Orange gradient */
+  --secondary-color: #e65100; /* Darker orange */
+  --text-color: #333;
+
+  /* Ash & Orange background gradient */
+  background: linear-gradient(to right, #f8a857, #ffe0b2); /* Ash to light orange */
+  background: linear-gradient(to left, #f8a857, #ffccbc); /* Optional alternative */
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* App container - full width and min height */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+  width: 100%;
+}
+
+/* Main content grows to fill the available space between Navbar and Footer */
+main {
+  flex-grow: 1;
+  width: 100%;
+}

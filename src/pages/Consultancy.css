@@ -1,0 +1,128 @@
+.consultancy-page {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.consultancy-hero {
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.consultancy-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* optional dark overlay */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+
+.consultancy-overlay h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: #fefefd;
+    margin-top: 100px; /* remove default margins for perfect centering */
+
+}
+
+.consultancy-content {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.consultancy-subtitle {
+  color: #000;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.consultancy-title {
+  font-size: 32px;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #f85503;
+}
+
+.consultancy-description {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: #333;
+}
+
+.consultancy-services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.service-box {
+  background: #f5f5f5;
+  padding: 30px;
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+  color: #f85503;
+}
+
+.service-box:hover {
+  transform: translateY(-5px);
+  background-color: #e8f0fe;
+}
+
+.service-box a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Existing styles above remain unchanged */
+
+@media (max-width: 768px) {
+  .consultancy-hero {
+    height: 35vh;
+  }
+
+  .consultancy-overlay h1 {
+    font-size: 28px;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .consultancy-content {
+    padding: 30px 15px;
+  }
+
+  .consultancy-subtitle {
+    font-size: 14px;
+  }
+
+  .consultancy-title {
+    font-size: 24px;
+    margin: 8px 0;
+  }
+
+  .consultancy-description {
+    font-size: 16px;
+    max-width: 100%;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+
+  .consultancy-services-grid {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .service-box {
+    width: 90%;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+}

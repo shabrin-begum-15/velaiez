@@ -1,0 +1,152 @@
+/* Admin.css */
+
+.admin-dashboard {
+  max-width: 1400px;
+  margin: 120px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-dashboard h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.job-form,
+.job-list,
+.search-bar {
+  margin-bottom: 30px;
+}
+
+.job-form h2,
+.job-list h2 {
+  margin-bottom: 15px;
+  color: #34495e;
+}
+
+.job-form input,
+.job-form textarea,
+.search-bar input,
+.job-item input,
+.job-item textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.job-form textarea{
+  height: 300px;
+}
+.job-item textarea{
+  height: 200px;
+}
+.job-item
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Separate Button Styles */
+.job-form button,
+.job-item button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 10px;
+  transition: background 0.3s ease;
+}
+
+/* Save */
+.button-save {
+  background-color: #007bff;
+
+}
+.button-save:hover {
+  background-color: #0056b3;
+}
+
+/* Cancel */
+.button-cancel {
+  background-color: #6c757d;
+}
+.button-cancel:hover {
+  background-color: #5a6268;
+}
+
+/* Edit */
+.button-edit {
+  background-color: #28a745;
+  color: #000;
+}
+.button-edit:hover {
+  background-color: #218838;
+}
+
+/* Delete */
+.button-delete {
+  background-color: #dc3545;
+}
+.button-delete:hover {
+  background-color: #c82333;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.job-item {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.job-item h3 {
+  margin: 0 0 10px;
+  color: #2c3e50;
+}
+
+.job-item p {
+  margin: 6px 0;
+  color: #555;
+}
+
+.job-item input[type="text"],
+.job-item textarea {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 15px;
+  }
+
+  .job-form input,
+  .job-form textarea,
+  .search-bar input,
+  .job-item input,
+  .job-item textarea {
+    font-size: 14px;
+  }
+
+  .job-form button,
+  .job-item button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}

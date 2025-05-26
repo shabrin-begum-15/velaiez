@@ -1,0 +1,17 @@
+.header-container {
+  width: 100%;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
+}
+
+.announcement-bar {
+  background-color: #0077cc;
+  color: white;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 14px;
+  font-weight: 500;
+}

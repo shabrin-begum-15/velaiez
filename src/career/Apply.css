@@ -1,0 +1,190 @@
+.apply-container {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.apply-hero {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.apply-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apply-overlay h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.apply-form-section {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin: 50px auto;
+  max-width: 1450px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.left-image {
+  flex: 1;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.form-container {
+  flex: 1;
+  background-color: rgba(255, 97, 39, 0.677);
+  color: #fff;
+  padding: 40px;
+}
+
+.form-container h4,
+.form-container h2 {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #000;
+}
+
+.input-row {
+  display: flex;
+  gap: 15px;
+  color: #000;
+}
+
+.input-row input {
+  flex: 1;
+  background-color: #a2a2a2cc;
+  color: #000;
+}
+
+input,
+textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  width: 96%;
+  background-color: #a2a2a2cc;
+  color: #000;
+  font-size: large;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.upload-label {
+  margin-top: 10px;
+  display: block;
+}
+
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background: linear-gradient(135deg, #f92d1b, #f76e45);
+  color: #f7f8fa;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(to right, #f8a857, #ffe0b2);
+}
+
+.success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.success-modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: #333;
+}
+@media (max-width: 768px) {
+  .apply-hero {
+    height: 200px;
+    margin-top: 60px;
+  }
+
+  .apply-overlay h1 {
+    font-size: 1.8rem;
+    padding: 0 20px;
+  }
+
+  .apply-form-section {
+    flex-direction: column;
+    margin: 30px 15px;
+  }
+
+  .left-image {
+    min-height: 250px;
+    width: 100%;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+
+  .form {
+    gap: 12px;
+  }
+
+  .input-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input,
+  textarea {
+    width: 93%;
+    font-size: 1rem;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .success-modal-content {
+    width: 90%;
+    padding: 20px;
+  }
+}

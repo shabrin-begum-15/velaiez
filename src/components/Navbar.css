@@ -1,0 +1,154 @@
+/* Top Bar */
+.top-bar {
+  background-color: rgb(255, 51, 0);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 20px;
+  font-size: 14px;
+}
+
+.top-bar .social-icons svg {
+  margin-left: 10px;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.top-bar .social-icons svg:hover {
+  color: #b2b2b2;
+}
+
+/* Navbar Container */
+.navbar-container {
+  width: 100%;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  font-size: 18px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  height: 50px;
+  margin-top: 5px;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: rgb(255, 51, 0);
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a,
+.nav-links span {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-links a:hover,
+.nav-links span:hover {
+  color: rgb(255, 51, 0);
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background-color: #b2b2b2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px 0;
+  border-radius: 4px;
+  min-width: 180px;
+  z-index: 1000;
+  font-size: 15px;
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 8px 20px;
+  white-space: nowrap;
+  color: black;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: rgba(242, 228, 212, 0.667);
+  color: white;
+}
+
+.dropdown-icon {
+  margin-left: 5px;
+  font-size: 12px;
+  vertical-align: middle;
+  color: rgb(255, 51, 0);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #efeded; /* ash */
+    display: none;
+    margin-top: 0px;
+    text-align: center;
+    
+  }
+
+  .nav-links.active {
+    display: flex;
+    margin-left: -40px;
+    
+  }
+  .dropdown-menu{
+    position: static;
+    top: auto;
+    left: auto;
+    background-color: #7f7e7e; /* ash */
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+    width: 100%;
+  }
+  }

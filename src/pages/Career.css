@@ -1,0 +1,137 @@
+.career-section {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 80px;
+}
+
+.career-hero {
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  position: relative;
+}
+
+.career-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+
+.career-overlay h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: #fefefd;
+    margin-top: 0px; /* remove default margins for perfect centering */
+margin-bottom: 10px;
+}
+
+.p1{
+    text-align: center;
+    font-size: 23px;
+    color: #fd700b;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+
+.career-header p {
+  position: relative;
+  font-size: 18px;
+  margin-top: 10px;
+  z-index: 1;
+}
+
+.no-jobs {
+  text-align: center;
+  color: #666;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+.career-list {
+  max-width: 1500px;
+  width: 100%;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.velai p {
+  font-size: 1.1rem;
+  color: #f8600e;
+  margin-bottom: -15px;
+  margin-top: -25px;
+  margin-left: 10px;
+}
+
+.velai h1 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  color: #222;
+  margin-left: 8px;
+}
+
+.velai h2 {
+  font-size: 1.5rem;
+  color: #f8600e;
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+}
+
+.career-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease;
+}
+
+.career-card:hover {
+  transform: translateY(-5px);
+}
+
+.career-card p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.career-card strong {
+  color: #000;
+}
+.career-card p.description,
+.career-card p.qualification {
+  white-space: pre-wrap;
+}
+
+.career-card p.description{
+  margin-left: -10px;
+}
+
+.apply-btn {
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: linear-gradient(to right, #f84909, #f98055); /* Ash to light orange */
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.apply-btn:hover {
+  background: linear-gradient(to right, #f8a857, #ffe0b2); /* Ash to light orange */
+  opacity: 0.9;
+  color: #000;
+}

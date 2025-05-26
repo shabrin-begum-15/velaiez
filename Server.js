@@ -14,6 +14,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Serve static files if needed (uncomment if you have a public folder)
+// app.use(express.static(path.join(__dirname, 'public')));
+
 const upload = multer({ dest: 'uploads/' });
 const xmlFilePath = path.join(__dirname, 'Admin.xml');
 
@@ -23,10 +26,14 @@ const convertToXML = (jobs) => {
   return builder.buildObject({ jobs: { job: jobs } });
 };
 
-// ✅ GET all jobs from Admin.xml
+// Root route - simple health check
+app.get('/', (req, res) => {
+  res.send('Backend server is running!');
+});
+
+// GET all jobs
 app.get('/api/jobs', (req, res) => {
   if (!fs.existsSync(xmlFilePath)) {
-    // If file doesn't exist, return empty list
     return res.json([]);
   }
 
@@ -44,7 +51,7 @@ app.get('/api/jobs', (req, res) => {
   });
 });
 
-// ✅ POST - Add a new job
+// POST - Add a new job
 app.post('/api/jobs', (req, res) => {
   const newJob = req.body;
 
@@ -52,12 +59,10 @@ app.post('/api/jobs', (req, res) => {
     let jobs = [];
 
     const parseAndWrite = (jobsList) => {
-      // Extract existing IDs as numbers, ignore non-numeric or missing IDs
       const ids = jobsList.map(job => Number(job.id)).filter(id => !isNaN(id));
       const maxId = ids.length > 0 ? Math.max(...ids) : 0;
       const generatedId = (maxId + 1).toString();
 
-      // Add the new job with generated ID
       jobsList.push({
         id: generatedId,
         title: newJob.title || '',
@@ -65,10 +70,8 @@ app.post('/api/jobs', (req, res) => {
         qualification: newJob.qualification || '',
         description: newJob.description || '',
         status: newJob.status || 'Open',
-        
       });
 
-      // Convert updated jobs list to XML
       const xml = convertToXML(jobsList);
 
       fs.writeFile(xmlFilePath, xml, (err) => {
@@ -78,7 +81,6 @@ app.post('/api/jobs', (req, res) => {
     };
 
     if (err && err.code === 'ENOENT') {
-      // File doesn't exist yet, start fresh
       return parseAndWrite([]);
     }
 
@@ -86,7 +88,6 @@ app.post('/api/jobs', (req, res) => {
       xml2js.parseString(data, (err, result) => {
         if (err) return res.status(500).send('Error parsing XML');
 
-        // Make sure to get jobs array, or empty array if none
         jobs = result?.jobs?.job || [];
         parseAndWrite(jobs);
       });
@@ -96,8 +97,7 @@ app.post('/api/jobs', (req, res) => {
   });
 });
 
-
-// ✅ DELETE job by ID
+// DELETE job by ID
 app.delete('/api/jobs/:id', (req, res) => {
   const jobId = req.params.id;
 
@@ -119,7 +119,7 @@ app.delete('/api/jobs/:id', (req, res) => {
   });
 });
 
-// ✅ PUT - Edit job by ID
+// PUT - Edit job by ID
 app.put('/api/jobs/:id', (req, res) => {
   const jobId = req.params.id;
   const updatedJob = req.body;
@@ -154,8 +154,7 @@ app.put('/api/jobs/:id', (req, res) => {
   });
 });
 
-
-// ✅ Job Application (with resume)
+// Job Application with resume upload
 app.post('/send-application', upload.single('resume'), async (req, res) => {
   const { firstName, lastName, mobile, email, message, jobTitle } = req.body;
   const resume = req.file;
@@ -192,7 +191,7 @@ Message: ${message}
 
   try {
     await transporter.sendMail(mailOptions);
-    fs.unlinkSync(resume.path);
+    fs.unlinkSync(resume.path); // delete resume after sending
     res.status(200).json({ message: 'Application sent with resume.' });
   } catch (error) {
     console.error('Email send error:', error);
@@ -200,7 +199,7 @@ Message: ${message}
   }
 });
 
-// ✅ Contact form (no file)
+// Contact form without file
 app.post('/send-contact', async (req, res) => {
   const { name, email, phone, enquiry } = req.body;
 

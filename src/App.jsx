@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
 import Consultancy from "./pages/Consultancy";
 import Adminlogin from "./pages/Adminlogin";
@@ -17,6 +17,7 @@ import Financial from './consultancy/Financial';
 import Apply from './career/apply';
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
+
 import "./App.css";
 
 // ProtectedRoute component: checks if admin is logged in

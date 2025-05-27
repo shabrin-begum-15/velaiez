@@ -202,8 +202,8 @@ Message: ${enquiry}
   }
 });
 
-// Catch-all route to serve React app for non-API paths
-app.get('*', (req, res) => {
+// ✅ Fixed catch-all route for Express 5
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 

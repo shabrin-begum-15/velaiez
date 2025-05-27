@@ -7,6 +7,9 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import xml2js from 'xml2js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,6 +25,15 @@ const xmlFilePath = path.join(__dirname, 'Admin.xml');
 
 // Serve frontend files
 app.use(express.static(path.join(__dirname, 'dist')));
+
+// Nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS,
+  },
+});
 
 // Convert job array to XML
 const convertToXML = (jobs) => {
@@ -134,17 +146,9 @@ app.post('/send-application', upload.single('resume'), async (req, res) => {
   const resume = req.file;
   if (!resume) return res.status(400).json({ message: 'Resume not uploaded' });
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'shabrinbegum15102001@gmail.com',
-      pass: 'mfzf vjev oefa pweo', // Consider securing this!
-    },
-  });
-
   const mailOptions = {
     from: email,
-    to: 'shabrinbegum15102001@gmail.com',
+    to: process.env.GMAIL_USER,
     subject: `Job Application: ${jobTitle}`,
     text: `
 Name: ${firstName} ${lastName}
@@ -157,7 +161,7 @@ Message: ${message}
 
   try {
     await transporter.sendMail(mailOptions);
-    fs.unlinkSync(resume.path); // Clean up file
+    fs.unlinkSync(resume.path); // Delete uploaded file
     res.status(200).json({ message: 'Application sent with resume.' });
   } catch (error) {
     console.error('Email send error:', error);
@@ -169,17 +173,9 @@ Message: ${message}
 app.post('/send-contact', async (req, res) => {
   const { name, email, phone, enquiry } = req.body;
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'shabrinbegum15102001@gmail.com',
-      pass: 'mfzf vjev oefa pweo',
-    },
-  });
-
   const mailOptions = {
     from: email,
-    to: 'shabrinbegum15102001@gmail.com',
+    to: process.env.GMAIL_USER,
     subject: 'New Contact Enquiry',
     text: `
 Name: ${name}
@@ -198,9 +194,9 @@ Message: ${enquiry}
   }
 });
 
-// Catch-all for React Router
+// Catch-all to serve React frontend
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));

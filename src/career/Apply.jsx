@@ -1,155 +1,137 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import "./Apply.css";
-import applyBg from "../assets/career.jpg"; // Background image
-import careerSideImage from "../assets/career1.png";
+import React, { useState, useEffect } from 'react';
+import './Apply.css'; // Assuming you have a CSS file for styling
+
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 
 const Apply = () => {
-  const location = useLocation();
-const job = location.state?.job;
-
+  const [jobs, setJobs] = useState([]);
+  const [selectedJob, setSelectedJob] = useState(null);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    mobile: "",
-    email: "",
-    message: "",
+    firstName: '',
+    lastName: '',
+    mobile: '',
+    email: '',
+    message: '',
     resume: null,
   });
+  const [submitted, setSubmitted] = useState(false);
 
-  const [showSuccess, setShowSuccess] = useState(false);
+  // Normalize job from XML-like structure
+  const normalizeJob = (job) => ({
+    id: job.id?.[0] || job.id || '',
+    title: job.title?.[0] || '',
+    skill: job.skill?.[0] || '',
+    qualification: job.qualification?.[0] || '',
+    description: job.description?.[0] || '',
+    status: job.status?.[0] || 'Open',
+  });
 
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: files ? files[0] : value,
-    });
+  // Fetch jobs on mount
+  useEffect(() => {
+    fetch(`${API_BASE}/api/jobs`)
+      .then((res) => res.json())
+      .then((data) => {
+        const normalized = data.map(normalizeJob);
+        setJobs(normalized.filter((job) => job.status === 'Open'));
+      })
+      .catch((err) => console.error('Failed to load jobs', err));
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (e) => {
+    setFormData((prev) => ({ ...prev, resume: e.target.files[0] }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!selectedJob) return alert('Please select a job');
 
-    const formDataToSend = new FormData();
-    formDataToSend.append("firstName", formData.firstName);
-    formDataToSend.append("lastName", formData.lastName);
-    formDataToSend.append("mobile", formData.mobile);
-    formDataToSend.append("email", formData.email);
-    formDataToSend.append("message", formData.message);
-    formDataToSend.append("jobTitle", job?.title || "Not Specified");
-    formDataToSend.append("resume", formData.resume);
+    const payload = new FormData();
+    payload.append('firstName', formData.firstName);
+    payload.append('lastName', formData.lastName);
+    payload.append('mobile', formData.mobile);
+    payload.append('email', formData.email);
+    payload.append('message', formData.message);
+    payload.append('resume', formData.resume);
+    payload.append('jobTitle', selectedJob.title);
 
     try {
-      const response = await fetch("http://localhost:5000/send-application", {
-        method: "POST",
-        body: formDataToSend,
+      const response = await fetch(`${API_BASE}/send-application`, {
+        method: 'POST',
+        body: payload,
       });
 
       if (response.ok) {
-        setShowSuccess(true);
+        setSubmitted(true);
         setFormData({
-          firstName: "",
-          lastName: "",
-          mobile: "",
-          email: "",
-          message: "",
+          firstName: '',
+          lastName: '',
+          mobile: '',
+          email: '',
+          message: '',
           resume: null,
         });
-        document.getElementById("apply-form").reset();
+        setSelectedJob(null);
       } else {
-        alert("Failed to send application. Please try again.");
+        alert('Failed to submit application.');
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("Server error. Please try again later.");
+      console.error('Application error:', error);
+      alert('Server error. Try again later.');
     }
   };
 
   return (
     <div className="apply-container">
-      <div className="apply-hero" style={{ backgroundImage: `url(${applyBg})` }}>
-        <div className="apply-overlay">
-          <h1>Apply Now for {job?.title}</h1>
-        </div>
+      <h1>Apply for a Job</h1>
+
+      <div className="job-selection">
+        <label>Select a Job:</label>
+        <select
+          value={selectedJob?.id || ''}
+          onChange={(e) => {
+            const job = jobs.find((j) => j.id === e.target.value);
+            setSelectedJob(job || null);
+          }}
+        >
+          <option value="">-- Select Job --</option>
+          {jobs.map((job) => (
+            <option key={job.id} value={job.id}>
+              {job.title}
+            </option>
+          ))}
+        </select>
       </div>
 
-      <div className="apply-form-section">
-<div className="left-image" style={{ backgroundImage: `url(${careerSideImage})` }} />
-        <div className="form-container">
-          <h4>LET'S TALK CAREERS</h4>
-          <h2>Job Opportunities</h2>
-
-          <form onSubmit={handleSubmit} id="apply-form" className="form">
-            <div className="input-row">
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={formData.firstName}
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={formData.lastName}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="input-row">
-              <input
-                type="tel"
-                name="mobile"
-                placeholder="Mobile Number"
-                value={formData.mobile}
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="E-Mail"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <label htmlFor="resume-upload" className="upload-label">
-              Upload Resume
-            </label>
-            <input
-              id="resume-upload"
-              type="file"
-              name="resume"
-              onChange={handleChange}
-              accept=".pdf,.doc,.docx"
-            />
-
-            <textarea
-              name="message"
-              placeholder="Give a short note about yourself"
-              rows={4}
-              value={formData.message}
-              onChange={handleChange}
-            ></textarea>
-
-            <button type="submit">Submit Application</button>
-          </form>
+      {selectedJob && (
+        <div className="job-details">
+          <h2>{selectedJob.title}</h2>
+          <p><strong>Skill:</strong> {selectedJob.skill}</p>
+          <p><strong>Qualification:</strong> {selectedJob.qualification}</p>
+          <p><strong>Description:</strong> {selectedJob.description}</p>
         </div>
-      </div>
+      )}
 
-      {showSuccess && (
-        <div className="success-modal">
-          <div className="success-modal-content">
-            <h2>Application Submitted!</h2>
-            <p>
-              Your application for <strong>{job?.title}</strong> has been successfully submitted.
-            </p>
-            <button onClick={() => setShowSuccess(false)}>Close</button>
+      <form className="application-form" onSubmit={handleSubmit}>
+        <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleInputChange} required />
+        <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleInputChange} required />
+        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} required />
+        <input type="tel" name="mobile" placeholder="Mobile" value={formData.mobile} onChange={handleInputChange} required />
+        <textarea name="message" placeholder="Why should we hire you?" value={formData.message} onChange={handleInputChange} required />
+        <input type="file" name="resume" accept=".pdf,.doc,.docx" onChange={handleFileChange} required />
+        <button type="submit">Submit Application</button>
+      </form>
+
+      {submitted && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h2>Thank you for applying!</h2>
+            <p>Your application has been sent. We'll get back to you soon.</p>
+            <button onClick={() => setSubmitted(false)}>Close</button>
           </div>
         </div>
       )}

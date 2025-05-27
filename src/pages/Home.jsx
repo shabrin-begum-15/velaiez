@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './home.css';
+import './Home.css';
 import { Link } from 'react-router-dom'; // ✅ Added
 import About from "../assets/image2.png";
 import healthcare from "../assets/heathcare.jpg";

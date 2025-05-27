@@ -14,9 +14,9 @@ import Staffing from "./consultancy/Staffing";
 import Search from "./consultancy/Search";
 import Legal from "./consultancy/Legal";
 import Financial from './consultancy/Financial';
-import Apply from './career/apply';
+import Apply from './career/Apply';
 import Navbar from "./components/Navbar";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 
 import "./App.css";
 

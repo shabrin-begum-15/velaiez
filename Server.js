@@ -14,11 +14,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serve static files if needed (uncomment if you have a public folder)
-// app.use(express.static(path.join(__dirname, 'public')));
-
 const upload = multer({ dest: 'uploads/' });
 const xmlFilePath = path.join(__dirname, 'Admin.xml');
+
+// Serve the frontend from Vite build output
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Helper to convert jobs array to XML
 const convertToXML = (jobs) => {
@@ -26,38 +26,28 @@ const convertToXML = (jobs) => {
   return builder.buildObject({ jobs: { job: jobs } });
 };
 
-// Root route - simple health check
-app.get('/', (req, res) => {
-  res.send('Backend server is running!');
+// Health check route
+app.get('/api', (req, res) => {
+  res.send('Backend API is running!');
 });
 
 // GET all jobs
 app.get('/api/jobs', (req, res) => {
-  if (!fs.existsSync(xmlFilePath)) {
-    return res.json([]);
-  }
-
+  if (!fs.existsSync(xmlFilePath)) return res.json([]);
   fs.readFile(xmlFilePath, (err, data) => {
     if (err) return res.status(500).send('Error reading XML file');
-
     xml2js.parseString(data, (err, result) => {
-      if (err || !result || !result.jobs) {
-        return res.json([]);
-      }
-
-      const jobs = result.jobs.job || [];
-      res.json(jobs);
+      if (err || !result || !result.jobs) return res.json([]);
+      res.json(result.jobs.job || []);
     });
   });
 });
 
-// POST - Add a new job
+// POST - Add job
 app.post('/api/jobs', (req, res) => {
   const newJob = req.body;
-
   fs.readFile(xmlFilePath, (err, data) => {
     let jobs = [];
-
     const parseAndWrite = (jobsList) => {
       const ids = jobsList.map(job => Number(job.id)).filter(id => !isNaN(id));
       const maxId = ids.length > 0 ? Math.max(...ids) : 0;
@@ -73,21 +63,16 @@ app.post('/api/jobs', (req, res) => {
       });
 
       const xml = convertToXML(jobsList);
-
       fs.writeFile(xmlFilePath, xml, (err) => {
         if (err) return res.status(500).send('Error writing XML');
         res.status(200).json({ id: generatedId, ...newJob });
       });
     };
 
-    if (err && err.code === 'ENOENT') {
-      return parseAndWrite([]);
-    }
-
+    if (err && err.code === 'ENOENT') return parseAndWrite([]);
     if (data) {
       xml2js.parseString(data, (err, result) => {
         if (err) return res.status(500).send('Error parsing XML');
-
         jobs = result?.jobs?.job || [];
         parseAndWrite(jobs);
       });
@@ -97,19 +82,15 @@ app.post('/api/jobs', (req, res) => {
   });
 });
 
-// DELETE job by ID
+// DELETE job
 app.delete('/api/jobs/:id', (req, res) => {
   const jobId = req.params.id;
-
   fs.readFile(xmlFilePath, (err, data) => {
     if (err) return res.status(500).send('Error reading XML file');
-
     xml2js.parseString(data, (err, result) => {
       if (err) return res.status(500).send('Error parsing XML');
-
       let jobs = result?.jobs?.job || [];
       const updatedJobs = jobs.filter(job => job.id[0] !== jobId);
-
       const xml = convertToXML(updatedJobs);
       fs.writeFile(xmlFilePath, xml, (err) => {
         if (err) return res.status(500).send('Error writing XML');
@@ -119,17 +100,14 @@ app.delete('/api/jobs/:id', (req, res) => {
   });
 });
 
-// PUT - Edit job by ID
+// PUT - Update job
 app.put('/api/jobs/:id', (req, res) => {
   const jobId = req.params.id;
   const updatedJob = req.body;
-
   fs.readFile(xmlFilePath, (err, data) => {
     if (err) return res.status(500).send('Error reading XML file');
-
     xml2js.parseString(data, (err, result) => {
       if (err) return res.status(500).send('Error parsing XML');
-
       let jobs = result?.jobs?.job || [];
       const newJobs = jobs.map(job => {
         if (job.id[0] === jobId) {
@@ -144,7 +122,6 @@ app.put('/api/jobs/:id', (req, res) => {
         }
         return job;
       });
-
       const xml = convertToXML(newJobs);
       fs.writeFile(xmlFilePath, xml, (err) => {
         if (err) return res.status(500).send('Error writing XML');
@@ -154,7 +131,7 @@ app.put('/api/jobs/:id', (req, res) => {
   });
 });
 
-// Job Application with resume upload
+// Job Application with resume
 app.post('/send-application', upload.single('resume'), async (req, res) => {
   const { firstName, lastName, mobile, email, message, jobTitle } = req.body;
   const resume = req.file;
@@ -174,24 +151,17 @@ app.post('/send-application', upload.single('resume'), async (req, res) => {
     to: 'shabrinbegum15102001@gmail.com',
     subject: `Job Application: ${jobTitle}`,
     text: `
-New Job Application:
-
 Name: ${firstName} ${lastName}
 Email: ${email}
 Mobile: ${mobile}
 Message: ${message}
     `,
-    attachments: [
-      {
-        filename: resume.originalname,
-        path: resume.path,
-      },
-    ],
+    attachments: [{ filename: resume.originalname, path: resume.path }],
   };
 
   try {
     await transporter.sendMail(mailOptions);
-    fs.unlinkSync(resume.path); // delete resume after sending
+    fs.unlinkSync(resume.path); // Clean up file
     res.status(200).json({ message: 'Application sent with resume.' });
   } catch (error) {
     console.error('Email send error:', error);
@@ -199,7 +169,7 @@ Message: ${message}
   }
 });
 
-// Contact form without file
+// Contact form
 app.post('/send-contact', async (req, res) => {
   const { name, email, phone, enquiry } = req.body;
 
@@ -216,8 +186,6 @@ app.post('/send-contact', async (req, res) => {
     to: 'shabrinbegum15102001@gmail.com',
     subject: 'New Contact Enquiry',
     text: `
-New Contact Enquiry:
-
 Name: ${name}
 Email: ${email}
 Phone: ${phone}
@@ -234,5 +202,11 @@ Message: ${enquiry}
   }
 });
 
-const PORT = 5000;
+// Catch-all route to serve React app for non-API paths
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+// Start server
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

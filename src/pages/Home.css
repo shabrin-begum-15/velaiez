@@ -381,8 +381,8 @@
   margin: 0 auto;
   max-width: 1000px;
       margin-top: -90px;
-  height: 120vh;
-  margin-bottom: 30px;
+  height: 140vh;
+  margin-bottom: 10px;
 }
 .why-choose-us-container h2{
   margin-top: 10px;
@@ -409,14 +409,14 @@ font-size: 30px;
 .buttons-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 5px;
+  gap: 2px;
   padding: 10px 0;
 }
 
 .gradient-btn {
   font-size: 20px;
   padding: 8px;
-  min-height: 65px;
+  min-height: 25px;
   text-align: center;
   border-radius: 8px;
   color: white;

@@ -1,13 +1,22 @@
 .accounting-page {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Animation */
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
 }
 
 .accounting-hero {
-   height: 50vh;
+  height: 50vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+
+  /* Animation */
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
 }
 
 .accounting-overlay {
@@ -16,13 +25,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* Animation */
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.4s;
 }
 
 .accounting-overlay h1 {
   color: white;
   font-size: 36px;
   font-weight: bold;
-  margin-top: 100px; /* remove default margins for perfect centering */
+  margin-top: 100px;
 }
 
 .accounting-content {
@@ -32,10 +46,20 @@
   gap: 30px;
   justify-content: center;
   align-items: center;
+
+  /* Animation */
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.6s;
 }
 
 .text-section {
   max-width: 500px;
+
+  /* Animation */
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.8s;
 }
 
 .service-label {
@@ -51,18 +75,26 @@
   color: #f85503;
 }
 
-.accounting-discription{
-    font-size: 18px;
+.accounting-description {
+  font-size: 18px;
   line-height: 1.6;
-  color: #020202; 
+  color: #020202;
 }
-.Accounting-image-section img {
+
+.accounting-image-section img {
   max-width: 500px;
   width: 100%;
+  height: 350px;
   border-radius: 8px;
-}
-/* Existing styles above remain unchanged */
+  object-fit: cover;
 
+  /* Animation */
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 1s;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
   .accounting-hero {
     height: 35vh;
@@ -75,7 +107,6 @@
   }
 
   .accounting-content {
-    display: flex;
     flex-direction: column;
     padding: 20px 15px;
     gap: 20px;
@@ -94,32 +125,45 @@
   .text-section h2 {
     font-size: 22px;
     margin-bottom: 10px;
-
   }
 
-  .accounting-discription {
+  .accounting-description {
     font-size: 16px;
     line-height: 1.5;
     padding: 0 10px;
   }
-  .accounting-discription h3{
-       text-align: left;
+
+  .accounting-description h3 {
+    text-align: left;
     margin-bottom: -15px;
   }
-  .accounting-discription ul{
+
+  .accounting-description ul {
     padding-left: 20px;
     text-align: left;
   }
 
-  .image-section {
+  .accounting-image-section {
     width: 100%;
     text-align: center;
   }
-  .image-section img {
+
+  .accounting-image-section img {
     width: 100%;
     max-width: 100%;
     height: auto;
     border-radius: 10px;
+  }
+}
 
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

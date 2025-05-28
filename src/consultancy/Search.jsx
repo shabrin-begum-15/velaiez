@@ -31,7 +31,7 @@ const Search = () => {
         </div>
 
         <div className="Executive-image-section">
-          <img src={executiveImg} alt="Executive Search Services" />
+          <img src={executiveImg} alt="Executive Search Services" loading="eager" />
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Financial.css';
-import financeImg from '../assets/financial.jpg';       // Replace with your actual image
-import financeBg from '../assets/financial-bg.jpg';     // Replace with your background image
+import financeImg from '../assets/financial.jpg';
+import financeBg from '../assets/financial-bg.jpg';
 
 const Financial = () => {
   return (
@@ -30,8 +30,8 @@ const Financial = () => {
           </div>
         </div>
 
-        <div className="Financial-image-section">
-          <img src={financeImg} alt="Financial Consultancy" />
+        <div className="financial-image-section">
+          <img src={financeImg} alt="Financial Consultancy" loading="eager" />
         </div>
       </div>
     </div>

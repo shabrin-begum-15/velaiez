@@ -1,4 +1,3 @@
-// admin.jsx
 import React, { useState, useEffect } from 'react';
 import './Admin.css';
 
@@ -43,8 +42,8 @@ const Admin = ({ jobs, setJobs }) => {
   };
 
   const addJob = async () => {
-    if (!newJob.title.trim() || !newJob.skill.trim() || !newJob.description.trim()) {
-      alert('Please fill all fields');
+    if (!newJob.title || !newJob.skill || !newJob.description) {
+      alert('Please fill all required fields');
       return;
     }
 

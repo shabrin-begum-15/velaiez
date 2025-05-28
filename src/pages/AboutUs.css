@@ -1,4 +1,3 @@
-/* General Container */
 .aboutus-container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #222;
@@ -7,15 +6,62 @@
   padding: 0;
 }
 
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* Hero Section */
 .aboutus-hero {
-  height: 300px;
+  height: 400px;
   background-size: cover;
   background-position: center;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-repeat: no-repeat;
+  animation: zoomIn 1s ease-out;
 }
 
 .aboutus-overlay {
@@ -25,16 +71,17 @@
   border-radius: 8px;
   text-align: center;
   width: 100%;
-  height: 220px;
+  height: 320px;
 }
 
 .aboutus-overlay h1 {
   font-size: 2.8rem;
-  margin: 0;
-  margin-top: 100px;
+  margin-top: 180px;
+  margin-bottom: 0;
+  animation: fadeInUp 1s ease-out;
 }
 
-/* Main Section Padding */
+/* Main Section */
 .aboutus-main {
   padding: 60px 10%;
 }
@@ -48,7 +95,6 @@
   margin-bottom: 60px;
 }
 
-/* Image Card */
 .aboutus-image-card {
   flex: 1;
   min-width: 300px;
@@ -56,9 +102,9 @@
   position: relative;
   height: 300px;
   overflow: hidden;
+  animation: fadeInLeft 1s ease-out;
 }
 
-/* Image Styling */
 .aboutus-image-card img,
 .approach-right img,
 .aboutus-specializations img {
@@ -69,7 +115,7 @@
   display: block;
 }
 
-/* Caption Over Image */
+/* Caption */
 .image-caption {
   position: absolute;
   top: 86%;
@@ -84,6 +130,7 @@
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  animation: fadeInUp 1.2s ease-out;
 }
 
 .image-caption h3 {
@@ -95,20 +142,13 @@
 .image-caption p {
   margin: 0;
   font-size: 1rem;
-  color: #fcf8f8;
 }
 
 /* Text Block */
 .aboutus-text-block {
   flex: 2;
   min-width: 300px;
-}
-
-.aboutus-text-block .breadcrumb {
-  font-size: 1.3rem;
-  color: #040404;
-  margin-bottom: 8px;
-  font-weight: 700;
+  animation: fadeInRight 1s ease-out;
 }
 
 .aboutus-text-block h2 {
@@ -132,6 +172,7 @@
 
 .approach-left {
   flex: 1;
+  animation: fadeInLeft 1s ease-out;
 }
 
 .approach-left h3 {
@@ -166,6 +207,7 @@
   text-align: center;
   height: 300px;
   overflow: hidden;
+  animation: fadeInRight 1s ease-out;
 }
 
 /* Specializations Section */
@@ -181,11 +223,13 @@
   border-radius: 12px;
   object-fit: cover;
   height: 300px;
+  animation: fadeInLeft 1s ease-out;
 }
 
 .specializations-text {
   flex: 1;
   min-width: 300px;
+  animation: fadeInRight 1s ease-out;
 }
 
 .specializations-text h3 {
@@ -202,7 +246,7 @@
   color: orangered;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media screen and (max-width: 768px) {
   .aboutus-row,
   .aboutus-approach-section,
@@ -224,13 +268,8 @@
   .aboutus-specializations img {
     height: auto;
   }
-  .aboutus-specializations img{
-    width: 430px;
-  }
 
-  .image-caption {
-    top: 86%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .aboutus-specializations img {
+    width: 100%;
   }
 }

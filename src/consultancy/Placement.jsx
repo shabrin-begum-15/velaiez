@@ -11,7 +11,7 @@ const Placement = () => {
         style={{ backgroundImage: `url(${placementBg})` }}
       >
         <div className="placement-overlay">
-          <h1>Permanent Placement </h1>
+          <h1>Permanent Placement</h1>
         </div>
       </div>
 
@@ -31,7 +31,7 @@ const Placement = () => {
         </div>
 
         <div className="Permanent-image-section">
-          <img src={placementImg} alt="Permanent Placement Services" />
+          <img src={placementImg} alt="Permanent Placement Services" loading="eager" />
         </div>
       </div>
     </div>

@@ -8,6 +8,8 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Fade in animation for dashboard */
+  animation: fadeIn 0.6s ease forwards;
 }
 
 .admin-dashboard h1 {
@@ -40,15 +42,29 @@
   border-radius: 6px;
   font-size: 16px;
   box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.job-form textarea{
+
+/* Input focus glow */
+.job-form input:focus,
+.job-form textarea:focus,
+.search-bar input:focus,
+.job-item input:focus,
+.job-item textarea:focus {
+  border-color: #f85503;
+  box-shadow: 0 0 8px rgba(248, 85, 3, 0.6);
+  outline: none;
+}
+
+.job-form textarea {
   height: 300px;
 }
-.job-item textarea{
+
+.job-item textarea {
   height: 200px;
 }
-.job-item
-textarea {
+
+.job-item textarea {
   resize: vertical;
   min-height: 80px;
 }
@@ -63,13 +79,20 @@ textarea {
   cursor: pointer;
   font-weight: bold;
   margin-right: 10px;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
+  /* Button scale on hover */
+  will-change: transform;
+}
+
+/* Button scale effect on hover */
+.job-form button:hover,
+.job-item button:hover {
+  transform: scale(1.05);
 }
 
 /* Save */
 .button-save {
   background-color: #007bff;
-
 }
 .button-save:hover {
   background-color: #0056b3;
@@ -108,12 +131,21 @@ textarea {
   width: 100%;
 }
 
+/* Job item with fade-in and slight scale up on hover */
 .job-item {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   margin-bottom: 20px;
   background-color: #f9f9f9;
+  animation: fadeInUp 0.5s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+.job-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
 }
 
 .job-item h3 {
@@ -131,6 +163,31 @@ textarea {
   margin-bottom: 10px;
 }
 
+/* Animations */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .admin-dashboard {
     padding: 15px;

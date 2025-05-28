@@ -1,7 +1,7 @@
 import React from 'react';
 import './Legal.css';
-import legalImg from '../assets/legal.jpeg'; // Replace with your actual image path
-import legalBg from '../assets/legal-bg.jpg'; // Replace with background image path
+import legalImg from '../assets/legal.jpeg'; // Right-side image
+import legalBg from '../assets/legal-bg.jpg'; // Background image
 
 const Legal = () => {
   return (
@@ -31,7 +31,7 @@ const Legal = () => {
         </div>
 
         <div className="legal-image-section">
-          <img src={legalImg} alt="Legal Consultancy" />
+          <img src={legalImg} alt="Legal Consultancy" loading="eager" />
         </div>
       </div>
     </div>

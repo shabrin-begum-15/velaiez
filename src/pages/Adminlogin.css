@@ -4,6 +4,8 @@
   align-items: center;
   min-height: 100vh;
   padding: 20px;
+  /* fade in container */
+  animation: fadeIn 0.6s ease forwards;
 }
 
 .login-card {
@@ -14,6 +16,8 @@
   max-width: 400px;
   width: 100%;
   text-align: center;
+  /* subtle pop in */
+  animation: popIn 0.5s ease forwards;
 }
 
 .login-card h2 {
@@ -30,14 +34,15 @@
   border: 1px solid #ccc;
   border-radius: 6px;
   background-color: #f9f9f9;
-  transition: border 0.2s;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   color: #000;
 }
 
-
+/* input focus glow */
 .login-card input:focus {
   border-color: #c84123;
   outline: none;
+  box-shadow: 0 0 8px rgba(200, 65, 35, 0.6);
 }
 
 .login-card button {
@@ -49,12 +54,15 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   margin-top: 10px;
+  /* button scale on hover */
+  will-change: transform;
 }
 
 .login-card button:hover {
   background-color: #a82f17;
+  transform: scale(1.05);
 }
 
 .error-message {
@@ -90,6 +98,13 @@
   border: 1px solid #ccc;
   border-radius: 6px;
   background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.password-wrapper input:focus {
+  border-color: #c84123;
+  outline: none;
+  box-shadow: 0 0 8px rgba(200, 65, 35, 0.6);
 }
 
 .toggle-password {
@@ -102,8 +117,12 @@
   display: flex;
   align-items: center;
   height: 100%;
+  transition: color 0.3s ease;
 }
+
+.toggle-password:hover,
 .toggle-password:focus {
+  color: #c84123;
   outline: none;
 }
 
@@ -117,8 +136,33 @@
     font-size: 20px;
   }
 
-  .login-card input, .login-card button {
+  .login-card input,
+  .login-card button {
     font-size: 13px;
     padding: 10px;
+  }
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

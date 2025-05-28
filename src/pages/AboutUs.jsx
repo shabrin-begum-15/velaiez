@@ -31,7 +31,7 @@ const AboutUs = () => {
       <div className="aboutus-main">
         <div className="aboutus-row">
           <div className="aboutus-image-card">
-            <img src={teamImage} alt="Velaiez Team" />
+            <img src={teamImage} alt="Velaiez Team" loading="eager" />
             <div className="image-caption">
               <h3>Velaiez</h3>
               <p>Consultants LLP</p>
@@ -61,13 +61,13 @@ const AboutUs = () => {
             </ul>
           </div>
           <div className="approach-right">
-            <img src={strategyImage} alt="Strategy and innovation" />
+            <img src={strategyImage} alt="Strategy and innovation" loading="lazy" />
           </div>
         </div>
 
         {/* Specializations Section */}
         <div className="aboutus-specializations">
-          <img src={techIconsImage} alt="Tech specializations" />
+          <img src={techIconsImage} alt="Tech specializations" loading="lazy" />
           <div className="specializations-text">
             <h3>Specializations:</h3>
             <p><strong>Tech Terrain:</strong> Guiding IT professionals to innovative companies.</p>

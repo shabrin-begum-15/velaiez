@@ -31,7 +31,7 @@ const Staffing = () => {
         </div>
 
         <div className="Temporary-image-section">
-          <img src={tempImg} alt="Temporary Staffing Services" />
+          <img src={tempImg} alt="Temporary Staffing Services" loading="eager" />
         </div>
       </div>
     </div>

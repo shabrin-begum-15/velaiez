@@ -290,7 +290,6 @@
   color: #111;
   margin-top: 10px;
 }
-
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   /* Home Section */
@@ -382,14 +381,13 @@
   margin: 0 auto;
   max-width: 1000px;
       margin-top: -90px;
-  height: 135vh;
+  height: 120vh;
   margin-bottom: 30px;
 }
 .why-choose-us-container h2{
   margin-top: 10px;
 }
 .text-content {
-  max-width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -413,12 +411,11 @@ font-size: 30px;
   grid-template-columns: 1fr;
   gap: 5px;
   padding: 10px 0;
-  height: 5px;
 }
 
 .gradient-btn {
-  font-size: 25px;
-  padding: 12px;
+  font-size: 20px;
+  padding: 8px;
   min-height: 65px;
   text-align: center;
   border-radius: 8px;

@@ -194,42 +194,41 @@
 .popup-close-button:hover {
   background-color: #b32404;
 }
-
 .whatsapp-chat-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 15px;       /* slightly closer to the edge */
+  right: 15px;
   background-color: #25d366;
   color: white;
   border-radius: 50px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.7rem 1rem;
-  box-shadow: 0 0 10px rgb(37 211 102 / 0.7);
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;  /* smaller padding */
+  box-shadow: 0 0 8px rgb(37 211 102 / 0.7);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.9rem;   /* smaller font size */
   cursor: pointer;
   text-decoration: none;
   z-index: 1100;
   user-select: none;
   transition: background-color 0.3s ease, transform 0.3s ease;
-
-  /* Animation */
-  opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 1s;
+  max-width: 260px;   /* keep it compact */
 }
 
 .whatsapp-chat-button:hover {
   background-color: #128c34;
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
-.whatsapp-icon {
-  width: 25px;
-  height: 25px;
+.whatsapp-chat-button img {
+  width: 18px;   /* smaller icon */
+  height: 18px;
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.2));
 }
+
 
 @media (max-width: 900px) {
   .contact-container {

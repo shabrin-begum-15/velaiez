@@ -17,7 +17,6 @@ const Legal = () => {
 
       <div className="legal-content">
         <div className="text-section">
-          <p className="service-label">OUR SERVICES</p>
           <h2>Legal Support</h2>
           <div className="legal-description">
             <ul>

@@ -116,7 +116,6 @@ const Navbar = () => {
                     <li><Link to="/search" onClick={closeAllMenus}>Executive Search</Link></li>
                     <li><Link to="/legal" onClick={closeAllMenus}>Legal Consultancy</Link></li>
                     <li><Link to="/accounting" onClick={closeAllMenus}>Accounting and Tax Consultation</Link></li>
-                    <li><Link to="/financial" onClick={closeAllMenus}>Financial Consultant</Link></li>
                   </ul>
                 )}
               </li>

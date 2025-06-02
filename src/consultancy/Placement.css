@@ -1,7 +1,5 @@
 .placement-page {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-  /* Animation */
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
 }
@@ -12,8 +10,6 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-
-  /* Animation */
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 0.2s;
@@ -25,8 +21,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* Animation */
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 0.4s;
@@ -40,121 +34,123 @@
 }
 
 .placement-content {
-  display: flex;
-  flex-wrap: wrap;
   padding: 40px 20px;
-  gap: 30px;
-  justify-content: center;
-  align-items: center;
-
-  /* Animation */
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 0.6s;
 }
 
+.placement-intro {
+  max-width: 1100px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+
+.placement-intro h2 {
+  font-size: 28px;
+  color: #f85503;
+  margin-bottom: 20px;
+}
+
+.placement-intro h3 {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #020202;
+  font-weight: 500;
+}
+
+.placement-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .text-section {
   max-width: 500px;
-
-  /* Animation */
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 0.8s;
 }
 
-.service-label {
-  color: #f85503;
-  font-weight: 500;
-  text-transform: uppercase;
-  font-size: 28px;
-}
-
-.text-section h2 {
-  font-size: 28px;
-  margin: 10px 0;
-  color: #f85503;
-}
-
-.placement-description {
+.text-section ul {
   font-size: 18px;
   line-height: 1.6;
   color: #020202;
+  padding-left: 20px;
 }
 
-.Permanent-image-section img {
-  max-width: 600px;
-  height: 350px;
+.text-section li {
+  margin-bottom: 20px;
+}
+
+.placement-image-section img {
+  max-width: 700px;
   width: 100%;
+  margin-top: 60px;
+  height: 450px;
   border-radius: 8px;
   object-fit: cover;
-
-  /* Animation */
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 1s;
 }
 
-/* Responsive styles */
+/* Responsive */
 @media (max-width: 768px) {
   .placement-hero {
     height: 35vh;
   }
 
   .placement-overlay h1 {
-    display: flex;
-    flex-direction: column;
-    padding: 20px 15px;
-    gap: 20px;
-    align-items: center;
+    font-size: 24px;
+    padding: 0 10px;
+    text-align: center;
   }
 
   .placement-content {
-    flex-direction: column;
     padding: 20px 15px;
-    gap: 20px;
   }
 
-  .text-section h2 {
-    max-width: 100%;
-    text-align: center;
+  .placement-intro h2 {
     font-size: 22px;
-    margin-bottom: 10px;
   }
 
-  .service-label {
-    font-size: 20px;
-    text-align: center;
-  }
-
-  .placement-description {
+  .placement-intro h3 {
     font-size: 16px;
-    line-height: 1.5;
+    text-align: left;
     padding: 0 10px;
   }
 
-  .placement-description h3 {
-    text-align: left;
-    margin-bottom: -15px;
+  .placement-main {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .placement-description ul {
-    padding-left: 20px;
+  .text-section {
+    max-width: 100%;
     text-align: left;
   }
 
-  .Permanent-image-section {
+  .text-section ul {
+    padding: 0 10px;
+  }
+
+  .placement-image-section {
     width: 100%;
     text-align: center;
   }
 
-  .Permanent-image-section img {
+  .placement-image-section img {
     width: 100%;
+    max-width: 100%;
     height: auto;
     border-radius: 10px;
   }
 }
 
-/* Animation keyframes */
+/* Animation Keyframes */
 @keyframes fadeInUp {
   from {
     opacity: 0;

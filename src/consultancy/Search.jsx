@@ -16,22 +16,28 @@ const Search = () => {
       </div>
 
       <div className="executive-content">
-        <div className="text-section">
-          <p className="service-label">OUR SERVICES</p>
+        {/* Full-width introduction */}
+        <div className="executive-intro">
           <h2>Executive Search</h2>
-          <div className="executive-description">
-            <h3>Finding top-tier executives requires expertise and precision. We conduct tailored searches to secure leaders who bring innovation and strategic direction to your company.</h3>
+          <h3>
+            Finding top-tier executives requires expertise and precision. We conduct tailored searches to secure leaders who bring innovation and strategic direction to your company.
+          </h3>
+        </div>
+
+        {/* Two-column content layout */}
+        <div className="executive-main">
+          <div className="text-section">
             <ul>
               <li><strong>C-Level Hiring:</strong> Strategic C-suite placements tailored to your business needs. We source high-caliber executives who strengthen leadership and fuel organizational success.</li>
               <li><strong>Confidential Search:</strong> Secure top executive talent with our confidential search approach, ensuring discretion, exclusivity, and tailored leadership solutions.</li>
               <li><strong>Leadership Mapping:</strong> Leadership mapping provides a comprehensive view of executive talent, helping organizations align their hiring decisions with future business needs.</li>
-              <li><strong>Industry Expertise:</strong>Our Consultant ensures you gain executives with the knowledge, skills, and strategic vision needed to excel in competitive markets.</li>
+              <li><strong>Industry Expertise:</strong> Our consultant ensures you gain executives with the knowledge, skills, and strategic vision needed to excel in competitive markets.</li>
             </ul>
           </div>
-        </div>
 
-        <div className="Executive-image-section">
-          <img src={executiveImg} alt="Executive Search Services" loading="eager" />
+          <div className="executive-image-section">
+            <img src={executiveImg} alt="Executive Search Services" loading="eager" />
+          </div>
         </div>
       </div>
     </div>

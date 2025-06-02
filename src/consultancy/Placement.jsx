@@ -20,12 +20,12 @@ const Placement = () => {
           <p className="service-label">OUR SERVICES</p>
           <h2>Permanent Placement</h2>
           <div className="placement-description">
-            <h3>We connect skilled professionals with long-term career opportunities:</h3>
+            <h3>With our expertise in permanent placement, we ensure businesses gain employees who are not only skilled but also aligned with their mission and values.</h3>
             <ul>
-              <li><strong>Talent Acquisition:</strong> Sourcing candidates through multi-channel recruitment</li>
-              <li><strong>Candidate Screening:</strong> Rigorous evaluation and shortlisting process</li>
-              <li><strong>Job Matching:</strong> Aligning candidate skills with organizational requirements</li>
-              <li><strong>Onboarding Support:</strong> Smooth transition and documentation support</li>
+              <li><strong>Talent Acquisition:</strong> Building a strong workforce starts with hiring the right people. Our Consultant engage with you to find permanent candidates who embody your values and contribute to your success.</li>
+              <li><strong>Candidate Screening:</strong> Effective candidate screening is essential to finding the right talent. Our consultant will carefully evaluate applicants to ensure they meet your requirements and align with your organization's goals.</li>
+              <li><strong>Job Matching:</strong>Effective job matching goes beyond qualifications—we consider personality, work culture, and long-term growth to find the best fit for both employers and professionals.</li>
+              <li><strong>Onboarding Support:</strong> Strong onboarding builds a foundation for long-term success. Our approach helps new hires acclimate efficiently, fostering productivity and collaboration from day one.</li>
             </ul>
           </div>
         </div>

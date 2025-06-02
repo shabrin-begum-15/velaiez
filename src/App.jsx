@@ -13,7 +13,6 @@ import Placement from "./consultancy/Placement";
 import Staffing from "./consultancy/Staffing";
 import Search from "./consultancy/Search";
 import Legal from "./consultancy/Legal";
-import Financial from './consultancy/Financial';
 import Apply from './career/Apply';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -67,7 +66,6 @@ function App() {
             <Route path="/staffing" element={<Staffing />} />
             <Route path="/search" element={<Search />} />
             <Route path="/legal" element={<Legal />} />
-            <Route path="/financial" element={<Financial />} />
             <Route path="/Login" element={<Adminlogin />} />
             <Route path="/career" element={<Career jobs={jobs} />} />
             <Route path="/apply" element={<Apply />} />

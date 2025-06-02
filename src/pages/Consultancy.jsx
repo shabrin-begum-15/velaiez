@@ -40,7 +40,6 @@ const Consultancy = () => {
           <div className="service-box"><Link to="/search"><h4>Executive Search</h4></Link></div>
           <div className="service-box"><Link to="/legal"><h4>Legal Consultancy</h4></Link></div>
           <div className="service-box"><Link to="/accounting"><h4>Accounting & Tax Consultation</h4></Link></div>
-          <div className="service-box"><Link to="/financial"><h4>Financial Consultant</h4></Link></div>
         </div>
       </section>
     </div>

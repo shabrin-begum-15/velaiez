@@ -1,7 +1,6 @@
+/* === Existing Desktop / Tablet Styles === */
 .accounting-page {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-  /* Animation */
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
 }
@@ -12,8 +11,6 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-
-  /* Animation */
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 0.2s;
@@ -25,8 +22,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* Animation */
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 0.4s;
@@ -40,61 +35,93 @@
 }
 
 .accounting-content {
-  display: flex;
-  flex-wrap: wrap;
   padding: 40px 20px;
-  gap: 30px;
-  justify-content: center;
-  align-items: center;
-
-  /* Animation */
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 0.6s;
 }
 
-.text-section {
-  max-width: 500px;
+.accounting-intro {
+  max-width: 1100px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
 
-  /* Animation */
+.accounting-intro h2 {
+  font-size: 28px;
+  color: #f85503;
+  margin-bottom: 20px;
+}
+
+.accounting-intro h3 {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #020202;
+  font-weight: 500;
+}
+
+/* 🔁 Zigzag Sections (Desktop Behavior) */
+.accounting-split-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.accounting-split-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.image-side {
+  flex: 1;
+  max-width: 500px;
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 0.8s;
 }
 
-.service-label {
-  color: #f85503;
-  font-weight: 500;
-  text-transform: uppercase;
-  font-size: 28px;
-}
-
-.text-section h2 {
-  font-size: 28px;
-  margin: 10px 0;
-  color: #f85503;
-}
-
-.accounting-description {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #020202;
-}
-
-.accounting-image-section img {
-  max-width: 500px;
+.image-side img {
   width: 100%;
-  height: 350px;
-  border-radius: 8px;
+  height: auto;
+  border-radius: 10px;
   object-fit: cover;
+}
 
-  /* Animation */
+.text-side {
+  flex: 1;
+  max-width: 600px;
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 1s;
 }
 
-/* Responsive styles */
+.text-side ul {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #020202;
+  padding-left: 20px;
+}
+
+.text-side li {
+  margin-bottom: 20px;
+}
+
+/* ✨ Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* 📱 Mobile Styles */
 @media (max-width: 768px) {
   .accounting-hero {
     height: 35vh;
@@ -107,63 +134,42 @@
   }
 
   .accounting-content {
-    flex-direction: column;
     padding: 20px 15px;
-    gap: 20px;
-    align-items: center;
   }
 
-  .text-section {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .service-label {
-    font-size: 20px;
-  }
-
-  .text-section h2 {
+  .accounting-intro h2 {
     font-size: 22px;
-    margin-bottom: 10px;
   }
 
-  .accounting-description {
+  .accounting-intro h3 {
     font-size: 16px;
-    line-height: 1.5;
+    text-align: left;
     padding: 0 10px;
   }
 
-  .accounting-description h3 {
-    text-align: left;
-    margin-bottom: -15px;
+  /* ➤ Force both normal and reverse sections to stack in column */
+  .accounting-split-section,
+  .accounting-split-section.reverse {
+    flex-direction: column;
   }
 
-  .accounting-description ul {
-    padding-left: 20px;
-    text-align: left;
-  }
+  /* For the normal (left-image) section: image-side is first in HTML,
+     so it appears on top, then text-side beneath. */
 
-  .accounting-image-section {
-    width: 100%;
-    text-align: center;
-  }
+  /* For the reverse (right-image) section: text-side is first in HTML,
+     so on mobile it appears on top, with the right-hand image (image-side)
+     appearing below. This ensures “left image → top” and “right image → bottom.” */
 
-  .accounting-image-section img {
-    width: 100%;
+  .image-side,
+  .text-side {
     max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+    width: 100%;
   }
-}
 
-/* Animation keyframes */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .image-side img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
   }
 }

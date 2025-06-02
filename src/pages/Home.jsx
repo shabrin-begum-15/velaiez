@@ -62,13 +62,17 @@ const Home = () => {
           </p>
         </div>
         <div className="buttons-grid">
-          <Link to="/placement"><button className="gradient-btn"><h4>Permanent Placement</h4></button></Link>
-          <Link to="/staffing"><button className="gradient-btn"><h4>Temporary Staffing</h4></button></Link>
-          <Link to="/search"><button className="gradient-btn"><h4>Executive Search</h4></button></Link>
-          <Link to="/legal"><button className="gradient-btn"><h4>Legal Consultancy</h4></button></Link>
-          <Link to="/accounting"><button className="gradient-btn"><h4>Accounting & Tax Consultation</h4></button></Link>
-          <Link to="/financial"><button className="gradient-btn"><h4>Financial Consultant</h4></button></Link>
-        </div>
+  <div className="button-row">
+    <Link to="/placement"><button className="gradient-btn">Permanent Placement</button></Link>
+    <Link to="/staffing"><button className="gradient-btn">Temporary Staffing</button></Link>
+    <Link to="/search"><button className="gradient-btn">Executive Search</button></Link>
+  </div>
+  <div className="button-row center-row">
+    <Link to="/legal"><button className="gradient-btn">Legal Consultancy</button></Link>
+    <Link to="/accounting"><button className="gradient-btn">Accounting & Tax Consultation</button></Link>
+  </div>
+</div>
+
       </section>
     </>
   );

@@ -20,12 +20,12 @@ const Search = () => {
           <p className="service-label">OUR SERVICES</p>
           <h2>Executive Search</h2>
           <div className="executive-description">
-            <h3>We specialize in sourcing senior and leadership talent:</h3>
+            <h3>Finding top-tier executives requires expertise and precision. We conduct tailored searches to secure leaders who bring innovation and strategic direction to your company.</h3>
             <ul>
-              <li><strong>C-Level Hiring:</strong> CEOs, CFOs, CTOs and top executives</li>
-              <li><strong>Confidential Search:</strong> Discreet and strategic headhunting</li>
-              <li><strong>Leadership Mapping:</strong> Market intelligence on leadership roles</li>
-              <li><strong>Industry Expertise:</strong> Specialized recruiters for niche sectors</li>
+              <li><strong>C-Level Hiring:</strong> Strategic C-suite placements tailored to your business needs. We source high-caliber executives who strengthen leadership and fuel organizational success.</li>
+              <li><strong>Confidential Search:</strong> Secure top executive talent with our confidential search approach, ensuring discretion, exclusivity, and tailored leadership solutions.</li>
+              <li><strong>Leadership Mapping:</strong> Leadership mapping provides a comprehensive view of executive talent, helping organizations align their hiring decisions with future business needs.</li>
+              <li><strong>Industry Expertise:</strong>Our Consultant ensures you gain executives with the knowledge, skills, and strategic vision needed to excel in competitive markets.</li>
             </ul>
           </div>
         </div>

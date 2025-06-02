@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import './Adminlogin.css';
 
@@ -62,8 +63,7 @@ const AdminLogin = () => {
             }}
             aria-label={showPassword ? "Hide password" : "Show password"}
           >
-            {showPassword ? '👁️' : '🙈'}
-          </span>
+{showPassword ? <FaEyeSlash /> : <FaEye />}          </span>
         </div>
         {error && <div className="error-message">{error}</div>}
         <button onClick={handleLogin}>Login</button>

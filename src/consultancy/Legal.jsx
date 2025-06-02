@@ -20,12 +20,8 @@ const Legal = () => {
           <p className="service-label">OUR SERVICES</p>
           <h2>Legal Support</h2>
           <div className="legal-description">
-            <h3>We offer expert legal consulting in areas such as:</h3>
             <ul>
-              <li><strong>Corporate Law:</strong> Legal structuring and documentation for businesses</li>
-              <li><strong>Compliance:</strong> Statutory and regulatory compliance services</li>
-              <li><strong>Labor Law:</strong> Employee contracts, termination policy review</li>
-              <li><strong>Legal Documentation:</strong> Drafting MOUs, agreements, and notices</li>
+              <li><strong></strong> The legal team  is responsible for ensuring compliance with all applicable laws, managing regulatory requirements, overseeing business registrations and licenses, drafting and reviewing contracts, agreements, and notices, handling employee-related legal matters, resolving disputes, mitigating risks, and safeguarding the company's interests through structured legal documentation and governance policies.</li>
             </ul>
           </div>
         </div>
